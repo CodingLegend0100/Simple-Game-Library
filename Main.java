@@ -23,15 +23,18 @@ public class Main extends GamePanel {
     public Main(){ super(WIDTH,HEIGHT,FPS,BACKGROUND); }
 
     public void keyPressed(String key){
-        System.out.println(key);
+    
+    
     }
 
     public void keyReleased(String key){
 
+    
     }
 
     public void update(){
         //Update the positions of objects on the screen
+    
     }
 
     public void draw(Graphics2D g){
