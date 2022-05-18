@@ -2,6 +2,7 @@ package gamelib;
 
 import java.awt.Image;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 //DO NOT EDIT THIS CLASS
@@ -11,6 +12,9 @@ public class Sprite {
     protected int width,height;
     protected double rotation; //Rotation in degrees
     protected Image i;
+
+    /** Blank constructor for a blank sprite */
+    public Sprite(){}
 
     /**Create a sprite whose size will be inherited from the image's width and height */
     public Sprite(String image,double x,double y){
@@ -67,10 +71,11 @@ public class Sprite {
     public void setRotation(double degrees){ this.rotation = degrees; }
     public void setImage(Image i){ this.i = i; }
 
-    public boolean isColliding(Sprite s){
+    public boolean isTouching(Sprite s){
         //If this.right > s.left && this.left < s.right && this.bottom > s.top && this.top < s.bottom
-        return x+width/2 > s.getX()-s.getWidth()/2 && x-width/2 < s.getX()+s.getWidth()/2 &&
-            y+height/2 > s.getY()-s.getHeight()/2 && y-height/2 < s.getY()+s.getHeight()/2;
+        Rectangle collide1 = new Rectangle((int)x+width/2,(int)y+height/2,width,height);
+        Rectangle collide2 = new Rectangle((int)s.getX()-s.getWidth()/2,(int)s.getY()-s.getHeight()/2,s.getWidth(),s.getHeight());
+        return collide1.intersects(collide2) || collide1.contains(collide2) || collide2.contains(collide1);
     }
 
     public void update(){}
