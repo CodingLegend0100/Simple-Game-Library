@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
 
 //DO NOT EDIT THIS CLASS
@@ -71,6 +72,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void keyPressed(String key){}
     public void keyReleased(String key){}
+    public void mouseDragged(int x, int y){}
+    public void mouseMoved(int x, int y){}
     public void mousePressed(int x, int y){}
     public void update(){}
     public void draw(Graphics2D g){}
@@ -91,7 +94,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
-    public class MouseInput implements MouseListener {
+    public class MouseInput implements MouseListener, MouseMotionListener {
 
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -117,6 +120,16 @@ public class GamePanel extends JPanel implements Runnable {
         @Override
         public void mouseExited(MouseEvent e) {
             
+        }
+
+        @Override
+        public void mouseDragged(MouseEvent e) {
+            GamePanel.this.mouseDragged(e.getX(),e.getY());
+        }
+
+        @Override
+        public void mouseMoved(MouseEvent e) {
+            GamePanel.this.mouseMoved(e.getX(),e.getY());
         }
 
     }

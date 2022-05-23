@@ -24,17 +24,15 @@ public class Main extends GamePanel {
         start();
     }
 
-    public void keyPressed(String key){
-    
-    }
+    public void keyPressed(String key){}
 
-    public void keyReleased(String key){
+    public void keyReleased(String key){}
 
-    }
+    public void mouseDragged(int x, int y){}
 
-    public void mousePressed(int x, int y){
+    public void mouseMoved(int x, int y){}
 
-    }
+    public void mousePressed(int x, int y){}
 
     public void update(){
         //Update the positions of objects on the screen
