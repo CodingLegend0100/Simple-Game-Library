@@ -1,39 +1,38 @@
 package gamelib;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 
 //DO NOT EDIT THIS CLASS
 public class GamePanel extends JPanel implements Runnable {
     
-    protected static int WIDTH = 900, HEIGHT = 600;
-    protected static int FPS = 60;
-    protected static Color BACKGROUND = new Color(10,10,10);
+    protected int WIDTH = 900, HEIGHT = 600;
+    protected int FPS = 60;
 
     Thread gameThread;
 
     public GamePanel(){
-        this(WIDTH,HEIGHT,FPS,BACKGROUND);
+        this(900,600);
     }
 
-    public GamePanel(int width, int height, int fps, Color background){
+    public GamePanel(int width, int height){
         WIDTH = width; HEIGHT = height;
-        FPS = fps;
-        BACKGROUND = background;
 
         setPreferredSize(new Dimension(width, height));
         addKeyListener(new KeyInput());
         setFocusable(true);
-        setBackground(background);
-        
+
+    }
+
+    public void start(){
         gameThread = new Thread(this);
         gameThread.start();
-
     }
 
     public void run(){
@@ -72,10 +71,11 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void keyPressed(String key){}
     public void keyReleased(String key){}
+    public void mousePressed(int x, int y){}
     public void update(){}
     public void draw(Graphics2D g){}
 
-    class KeyInput implements KeyListener {
+    public class KeyInput implements KeyListener {
 
         @Override
         public void keyTyped(KeyEvent e) {}
@@ -89,5 +89,35 @@ public class GamePanel extends JPanel implements Runnable {
         public void keyReleased(KeyEvent e) {
             GamePanel.this.keyReleased(KeyEvent.getKeyText(e.getKeyCode()));
         }
+    }
+
+    public class MouseInput implements MouseListener {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            GamePanel.this.mousePressed(e.getX(),e.getY());
+            
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            
+        }
+
     }
 }

@@ -1,35 +1,39 @@
 import gamelib.*;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
-
 import javax.swing.JFrame;
 
 public class Main extends GamePanel {
-    static int WIDTH = 900, HEIGHT = 600; //The dimensions of the window
-    static int FPS = 60; //Desired frames per second
-    static Color BACKGROUND = Color.WHITE; //Background color
     public static void main(String[] args){
         //Initialize the game window
-        JFrame window = new JFrame("Space Miner");
+        JFrame window = new JFrame("New Window");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.add(new Main());
         window.pack();
-        window.setIconImage(Sprite.loadImage("assets/spaceship.png"));
         window.setVisible(true);
     }
 
-    public Main(){ super(WIDTH,HEIGHT,FPS,BACKGROUND); }
+    public Main(){
+        super(900,600);
+        FPS = 60;
+        //Initialize your instance variables here
+
+
+
+        start();
+    }
 
     public void keyPressed(String key){
-    
     
     }
 
     public void keyReleased(String key){
 
-    
+    }
+
+    public void mousePressed(int x, int y){
+
     }
 
     public void update(){
